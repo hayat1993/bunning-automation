@@ -7,8 +7,8 @@ public class WebSurfing {
     public void test()
     {
 
-        System.setProperty("webdriver.gecko.driver" , "src/webDriverExecutables/firefox/geckodriver");
-        FirefoxDriver driver = new FirefoxDriver();
+        System.setProperty("webdriver.chrome.driver" , "src/webDriverExecutables/chrome/chromedriver.exe");
+        ChromeDriver driver = new ChromeDriver();
         driver.get("https://www.google.com");
 
     }
