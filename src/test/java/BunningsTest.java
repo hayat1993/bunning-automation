@@ -12,7 +12,7 @@ import java.util.Locale;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SearchTest {
+public class BunningsTest {
 
     ChromeDriver driver;
 
@@ -29,6 +29,7 @@ public class SearchTest {
 
     @Test
     public void test() {
+        //load the landing page for the test and search for paint
         LandingPage page = new LandingPage(driver);
         page.searchForPaint();
         try {
@@ -36,14 +37,17 @@ public class SearchTest {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        //filter for click and collect
         FilterClickAndCollect page1 = new FilterClickAndCollect(driver);
         page1.filterSearch();
 
+        //wait for 5 seconds before proceeding
         try {
             Thread.sleep(5000);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        //Add the paint to cart
         AddToCart page2 = new AddToCart(driver);
         String productNum = page2.addCartAndRetrieveAmount();
 
@@ -53,6 +57,7 @@ public class SearchTest {
             ex.printStackTrace();
         }
 
+        //Review the cart and check if the product value selected earlier is the same as before
         ReviewCart page3 = new ReviewCart(driver);
         String productNum2 = page3.review();
 

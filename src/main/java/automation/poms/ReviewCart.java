@@ -10,9 +10,11 @@ public class ReviewCart extends AbstractPOM{
         super(driver);
     }
 
+    //Find all the web elements by their xpath
     @FindBy(xpath = "//*[@id=\"confirmation-drawer\"]/div/div/div/div[2]/a/button")
     private WebElement reviewCart;
 
+    //click on review cart and then record the number of items again and return it
     public String review()
     {
         reviewCart.click();

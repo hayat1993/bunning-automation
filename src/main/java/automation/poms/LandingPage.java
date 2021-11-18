@@ -13,6 +13,7 @@ public class LandingPage extends AbstractPOM {
         super(driver);
     }
 
+    //Find all the web elements by their xpath or class values
     @FindBy(xpath = "//*[@id=\"main-header\"]/div[1]/div[1]/div[1]/div[2]/button")
     private WebElement getSearchButton;
 
@@ -22,6 +23,7 @@ public class LandingPage extends AbstractPOM {
     @FindBy(xpath = "//*[@id=\"crossIcon\"]")
     private WebElement searchButton;
 
+    //go to the website url and search for paint
     public void searchForPaint()
     {
         driver.get("https://www.bunnings.com.au/");

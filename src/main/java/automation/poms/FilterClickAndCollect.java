@@ -12,12 +12,14 @@ public class FilterClickAndCollect extends AbstractPOM {
         super(driver);
     }
 
+    //Find all the web elements by their xpath
     @FindBy(xpath = "//*[@id=\"panel1bh-header\"]/div[2]")
     private WebElement filterDropDown;
 
     @FindBy(xpath = "//*[@id=\"panel1bh-content\"]/div/div/div[2]/button[1]/div/div/span[1]")
     private WebElement clickAndCollectSelection;
 
+    //click on the filter dropdown and then click on the click and collect filter
     public void filterSearch()
     {
         filterDropDown.click();

@@ -11,14 +11,12 @@ public class AddToCart extends AbstractPOM{
         super(driver);
     }
 
+
+    //Find all the web elements by their xpath
     @FindBy(xpath = "//*[@id=\"__next\"]/main/div/div[2]/div/div[4]/article[2]/a/div[3]/div/div/button")
     private WebElement addToCart;
 
-
-
-
-
-
+    //add an item to cart and record its value and then return it
     public String addCartAndRetrieveAmount()
     {
         addToCart.click();
