@@ -2,24 +2,28 @@ import automation.poms.AddToCart;
 import automation.poms.FilterClickAndCollect;
 import automation.poms.LandingPage;
 import automation.poms.ReviewCart;
+import automation.utils.Constants;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.util.Locale;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BunningsTest {
+
+    Constants constants = new Constants();
+    String property = constants.getSystemProperty();
+    String driverDirectory = constants.getDriverDirectoryWindows();
+    String getDriverDirectoryAlternate = constants.getDriverDirectoryMac();
 
     ChromeDriver driver;
 
     //initiate the driver
     @BeforeTest
     public void initiate() {
-        System.setProperty("webdriver.chrome.driver", "src/webDriverExecutables/chrome/chromedriver.exe");
+        System.setProperty(property, driverDirectory);
         //make sure that the driver uses full screen for the test
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("start-maximized");
@@ -67,6 +71,12 @@ public class BunningsTest {
 
     @AfterTest
     public void killDriver() {
+        //wait for 5 seconds before ending the test
+        try {
+            Thread.sleep(5000);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         driver.close();
 
     }
