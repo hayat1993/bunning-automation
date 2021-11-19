@@ -32,7 +32,7 @@ public class BunningsTest {
 
 
     @Test
-    public void test() {
+    public void testBunningWebsite() {
         //load the landing page for the test and search for paint
         LandingPage page = new LandingPage(driver);
         page.searchForPaint();
