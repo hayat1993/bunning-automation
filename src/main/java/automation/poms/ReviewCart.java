@@ -13,6 +13,7 @@ public class ReviewCart extends AbstractPOM{
     //Find all the web elements by their xpath
     @FindBy(xpath = "//*[@id=\"confirmation-drawer\"]/div/div/div/div[2]/a/button")
     private WebElement reviewCart;
+    private String itemPrice = "";
 
     //click on review cart and then record the number of items again and return it
     public String review()
@@ -24,10 +25,19 @@ public class ReviewCart extends AbstractPOM{
         } catch (Exception ex ) {
             ex.printStackTrace();
         }
+        WebElement priceField = driver.findElement(By.xpath("//*[@id=\"__next\"]/main/div/div[2]/div[1]/div/div[4]/div/div[3]/div[2]/div/div"));
+        String price = priceField.getText();
+        itemPrice = price;
+
         WebElement value = driver.findElement(By.className("quantityEdit"));
         String productNumber = value.getAttribute("value");
-        //System.out.println(productNumber);
+
 
         return productNumber;
+    }
+
+    public String getItemPrice()
+    {
+        return itemPrice;
     }
 }

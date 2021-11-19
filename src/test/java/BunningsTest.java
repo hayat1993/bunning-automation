@@ -32,7 +32,7 @@ public class BunningsTest {
 
 
     @Test
-    public void testBunningWebsite() {
+    public void testBunningsWebsite() {
         //load the landing page for the test and search for paint
         LandingPage page = new LandingPage(driver);
         page.searchForPaint();
@@ -53,7 +53,10 @@ public class BunningsTest {
         }
         //Add the paint to cart
         AddToCart page2 = new AddToCart(driver);
-        String productNum = page2.addCartAndRetrieveAmount();
+        String productNumberPage2 = page2.addCartAndRetrieveAmount();
+        String itemPriceAddToCartPage = page2.getItemPrice();
+
+
 
         try {
             Thread.sleep(5000);
@@ -63,12 +66,19 @@ public class BunningsTest {
 
         //Review the cart and check if the product value selected earlier is the same as before
         ReviewCart page3 = new ReviewCart(driver);
-        String productNum2 = page3.review();
+        String productNumberPage3 = page3.review();
+        String itemPriceReviewPage = page3.getItemPrice();
 
-        assertThat(productNum.trim().equals(productNum2.trim())).isTrue();
+
+        //check if the quantity of the items are the same
+        assertThat(productNumberPage2.trim().equals(productNumberPage3.trim())).isTrue();
+
+        //check if the item prices are the same during adding to cart and the reviewing page
+        assertThat(itemPriceAddToCartPage.trim().equals(itemPriceReviewPage.trim())).isTrue();
 
     }
 
+    //after the test is done, kill the driver
     @AfterTest
     public void killDriver() {
         //wait for 5 seconds before ending the test
