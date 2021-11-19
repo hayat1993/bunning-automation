@@ -25,10 +25,12 @@ public class ReviewCart extends AbstractPOM{
         } catch (Exception ex ) {
             ex.printStackTrace();
         }
+        //get the total price in the review page
         WebElement priceField = driver.findElement(By.xpath("//*[@id=\"__next\"]/main/div/div[2]/div[1]/div/div[4]/div/div[3]/div[2]/div/div"));
         String price = priceField.getText();
         itemPrice = price;
 
+        //get the quantity of products in the review page
         WebElement value = driver.findElement(By.className("quantityEdit"));
         String productNumber = value.getAttribute("value");
 

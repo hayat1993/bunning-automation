@@ -20,7 +20,7 @@ public class AddToCart extends AbstractPOM{
     //add an item to cart and record its value and then return it
     public String addCartAndRetrieveAmount()
     {
-        //get the price of the item
+        //get the price of the item selected
         WebElement priceField = driver.findElement(By.xpath("//*[@id=\"__next\"]/main/div/div[2]/div/div[4]/article[2]/a/div[3]/a/div/p"));
         String price = priceField.getText();
         itemPrice = price;
